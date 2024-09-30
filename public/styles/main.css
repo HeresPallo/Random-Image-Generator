@@ -1,0 +1,115 @@
+
+body {
+  min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px; /* Set max width for the container */
+  background-color: white; /* White background for content area */
+  padding: 20px; /* Padding around content */
+  border-radius: 8px; /* Rounded corners */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); Subtle shadow */
+}
+
+/* Animation of the main container */
+.card:hover {
+  color: rgb(228, 76, 49);
+  transition: color 1s;
+}
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #ff0000,
+    #ff9a00 43%,
+    #ffe808
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #ff0000,
+    #ff9a00 43%,
+    #ffe808
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+h1 {
+  color: #ff0000; /* Dark text color */
+}
+
+h2 {
+  color: #333; /* Bootstrap primary color */
+}
+
+.btn {
+  background-color: #ff5a00; 
+  border: none; /* No border */
+}
+
+.form-button {
+  margin-top: 20px; /* Add desired space */
+}
+
+.btn:hover {
+  background-color: #ff0000; /* Darker red on hover */
+}
+
+.alert {
+  margin-top: 20px; /* Space between form and alert */
+}
+
+.img-fluid {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+}
